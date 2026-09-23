@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orisstystudios.github.io/profit-leak-scanner-site/sitemap.xml

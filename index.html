@@ -3,35 +3,322 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Profit Leak Scanner — by Orissty Studios</title>
-<style>
-  :root{ --paper:#F5F7F0; --bond:#FFFFFF; --ink:#1E2D36; --muted:#46525A;
-         --rule:#D9E0D2; --red:#B42318; --blue:#2F5A87; }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--paper);color:var(--ink);
-       font:16px/1.65 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-       min-height:100vh;display:grid;place-items:center;padding:24px}
-  main{max-width:560px;background:var(--bond);border:1px solid var(--rule);border-radius:3px;
-       padding:36px 40px;text-align:center}
-  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-  h1{font-size:28px;margin:0 0 8px}
-  p{color:var(--muted);margin:0 0 20px}
-  .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  a{display:inline-block;padding:11px 18px;border:1px solid var(--ink);border-radius:3px;
-    color:var(--ink);font-weight:600;text-decoration:none}
-  a.primary{background:var(--ink);color:var(--bond)}
-</style>
+<title>Auditink: free profit leak audit for Shopify stores</title>
+<meta name="description" content="Auditink is a free, read-only Shopify app that audits your store for profit leaks in about 30 seconds: discounts, returns, shipping, pricing and product pages. Every finding shows its math.">
+<link rel="canonical" href="https://orisstystudios.github.io/profit-leak-scanner-site/">
+<link rel="icon" href="assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Auditink">
+<meta property="og:title" content="See where your Shopify store leaks profit. Free, in 30 seconds.">
+<meta property="og:description" content="A read-only profit audit for Shopify. A risk verdict, the math behind it, and what to fix first.">
+<meta property="og:url" content="https://orisstystudios.github.io/profit-leak-scanner-site/">
+<meta property="og:image" content="https://orisstystudios.github.io/profit-leak-scanner-site/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5F7F0">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"SoftwareApplication",
+  "name":"Auditink: Profit Leak Scanner",
+  "applicationCategory":"BusinessApplication",
+  "operatingSystem":"Shopify",
+  "url":"https://apps.shopify.com/profit-leak-scanner-1",
+  "description":"A read-only Shopify app that audits a store for profit leaks and shows the math behind every finding.",
+  "publisher":{"@type":"Organization","name":"Orissty Studios"},
+  "offers":[
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD"},
+    {"@type":"Offer","name":"Growth Monitor","price":"19","priceCurrency":"USD"}
+  ]
+}
+</script>
 </head>
 <body>
-<main>
-  <p class="eyebrow">Orissty Studios</p>
-  <h1>Profit Leak Scanner</h1>
-  <p>A Shopify app that shows where your store is leaking profit — with the evidence and
-  the math behind every finding.</p>
-  <div class="links">
-    <a class="primary" href="./support.html">Support</a>
-    <a href="./privacy-policy.html">Privacy policy</a>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Auditink home">
+      <img src="assets/icon-180.png" alt="" width="32" height="32">
+      <span>Auditink<small>Profit leak audit</small></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#checks">What it checks</a>
+      <a href="#pricing">Pricing</a>
+      <a href="blog/">Blog</a>
+      <a class="btn btn-primary" href="https://apps.shopify.com/profit-leak-scanner-1?utm_source=auditink-site&amp;utm_medium=website&amp;utm_campaign=header">Get it free</a>
+    </nav>
   </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Free profit audit for Shopify</p>
+      <h1 id="hero-title">See where your store <em>leaks profit</em>. In about 30 seconds.</h1>
+      <p class="lede">Auditink reads your products, policies, pricing and orders, then gives you one clear report: where margin is quietly slipping away, and what to fix first. Read-only. No setup. No card.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://apps.shopify.com/profit-leak-scanner-1?utm_source=auditink-site&amp;utm_medium=website&amp;utm_campaign=hero">Run your free audit</a>
+        <a class="btn btn-ghost" href="blog/shopify-profit-leaks/">See the 12 leaks we check</a>
+      </div>
+      <p class="fineprint">Installs from the official Shopify App Store. Nothing in your store is changed.</p>
+    </div>
+
+    <figure class="statement" aria-label="Example Auditink report with sample data">
+      <div class="statement-head">
+        <b>Statement of estimated monthly losses</b>
+        <span>Report No. 007</span>
+      </div>
+      <div class="lines">
+        <div>Gross profit, trailing 30 days</div><div class="v num">$12,480</div>
+        <div>Identified leaks (6 findings)</div><div class="v num neg">($2,840)</div>
+        <div class="total">Profit after identified leaks</div><div class="v num total">$9,640</div>
+      </div>
+      <svg class="stamp" viewBox="0 0 120 120" role="img" aria-label="Stamp: risk index 72, high risk, estimate issued with medium confidence">
+        <defs><path id="ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#B42318" stroke-width="3"/>
+        <circle cx="60" cy="60" r="36" fill="none" stroke="#B42318" stroke-width="1.5"/>
+        <text font-family="ui-monospace,Consolas,monospace" font-size="9" font-weight="700" letter-spacing="2" fill="#B42318">
+          <textPath href="#ring">ESTIMATE ISSUED · MEDIUM CONFIDENCE ·</textPath>
+        </text>
+        <text x="60" y="64" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-size="26" font-weight="700" fill="#B42318">72</text>
+        <text x="60" y="80" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-size="7.5" font-weight="700" letter-spacing="1" fill="#B42318">HIGH RISK</text>
+      </svg>
+      <div class="conf">
+        <b>Confidence: medium.</b> Every number shows where it came from.
+        <ul>
+          <li>Revenue measured from 1,180 Shopify orders.</li>
+          <li>Gross margin measured from your product costs.</li>
+          <li>Ad spend not entered, so ad findings stay directional.</li>
+        </ul>
+      </div>
+      <figcaption class="sample">SAMPLE DATA</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="wrap">
+    <ul>
+      <li>Read-only access</li>
+      <li>Audit in about 30 seconds</li>
+      <li>Free plan, no card</li>
+      <li>On the Shopify App Store</li>
+    </ul>
+  </div>
+</div>
+
+<section id="how" class="alt" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title">Three clicks from install to a fix list</h2>
+      <p>No spreadsheets to upload, no tracking code to paste. Auditink works with the data your store already has.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Install from the App Store</h3><p>One click in your Shopify admin. The app asks only for read access, so it can look but never touch.</p></li>
+      <li><h3>Press Scan</h3><p>Auditink reads your catalog, policies, discounts and recent orders. It takes about half a minute.</p></li>
+      <li><h3>Fix the top of the list</h3><p>You get a risk verdict and a ranked list of leaks, each with a direct link to the product or setting to change.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="checks" aria-labelledby="checks-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What it checks</p>
+      <h2 id="checks-title">The leaks most stores never see on a dashboard</h2>
+      <p>Your sales report shows what came in. It does not show the orders you lost to a missing return promise, or the margin a blanket discount gave away. That is what Auditink looks for.</p>
+    </div>
+    <div class="checks">
+      <div class="check">
+        <h3><span class="tag">Margin</span> Pricing and discounts</h3>
+        <ul>
+          <li><b>Discounts deeper than your margin allows.</b> Average discount measured against gross margin.</li>
+          <li><b>Heavy compare-at markdowns.</b> Products marked down 35% or more.</li>
+          <li><b>Free shipping threshold too low.</b> Set so close to your average order that it rarely lifts basket size.</li>
+          <li><b>Ad cost squeezing profit.</b> What you pay per customer against profit per order.</li>
+        </ul>
+      </div>
+      <div class="check">
+        <h3><span class="tag">Returns</span> Refunds and fit</h3>
+        <ul>
+          <li><b>High return rate.</b> Flagged once refunds pass the level where most operators start digging.</li>
+          <li><b>Return signals in reviews.</b> Phrases like "runs small" or "not as pictured".</li>
+          <li><b>Missing size or fit guidance.</b> Apparel and shoes with no size chart or fit notes.</li>
+        </ul>
+      </div>
+      <div class="check">
+        <h3><span class="tag">Trust</span> Reasons shoppers hesitate</h3>
+        <ul>
+          <li><b>Return promise hidden.</b> Only on a policy page, not near the buy button.</li>
+          <li><b>No shipping timeline on the product page.</b></li>
+          <li><b>Weak social proof.</b> No reviews, ratings or testimonials where people decide.</li>
+          <li><b>Support hard to find</b> before purchase.</li>
+        </ul>
+      </div>
+      <div class="check">
+        <h3><span class="tag">Catalog</span> Product pages</h3>
+        <ul>
+          <li><b>Thin descriptions.</b> Products with fewer than 20 words of copy.</li>
+          <li><b>Missing product images.</b></li>
+          <li><b>No product FAQ</b> answering shipping, sizing and material questions.</li>
+          <li><b>Contradicting claims</b> about materials, care or delivery speed.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:24px"><a href="blog/shopify-profit-leaks/">Read the full guide to all 12 leaks, and how to check them by hand &rarr;</a></p>
+  </div>
+</section>
+
+<section class="alt" aria-labelledby="honest-title">
+  <div class="wrap split">
+    <div class="section-head" style="margin:0">
+      <p class="eyebrow">Honest by design</p>
+      <h2 id="honest-title">No scare numbers. When the data can't support a figure, we say so.</h2>
+      <p>Plenty of tools will tell you that you are "losing $50,000 a month". Auditink only issues a money estimate when your store's data can back it up, and it shows the formula, the inputs and the research behind every finding. When it can't, the estimate is withheld and the catalog findings still stand.</p>
+    </div>
+    <figure class="statement withheld" aria-label="Example report where the estimate is withheld, sample data">
+      <div class="statement-head">
+        <b>Statement of estimated monthly losses</b>
+        <span>Report No. 001</span>
+      </div>
+      <div class="lines" style="min-height:0">
+        <div>Gross profit, trailing 30 days</div><div class="v num">WITHHELD</div>
+        <div class="total">Identified leaks</div><div class="v num total">WITHHELD</div>
+      </div>
+      <svg class="stamp" viewBox="0 0 120 120" role="img" aria-label="Stamp: not rated, insufficient evidence">
+        <defs><path id="ring2" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#46525A" stroke-width="3"/>
+        <circle cx="60" cy="60" r="36" fill="none" stroke="#46525A" stroke-width="1.5"/>
+        <text font-family="ui-monospace,Consolas,monospace" font-size="9" font-weight="700" letter-spacing="2" fill="#46525A">
+          <textPath href="#ring2">ESTIMATE WITHHELD · INSUFFICIENT EVIDENCE ·</textPath>
+        </text>
+        <text x="60" y="66" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-size="9" font-weight="700" letter-spacing="1" fill="#46525A">NOT RATED</text>
+      </svg>
+      <div class="conf">
+        <b>Confidence: low.</b> Not enough data to estimate the leak yet.
+        <ul>
+          <li>No product costs found, so gross margin can't be measured.</li>
+          <li>Fewer than 30 orders in range.</li>
+          <li>Catalog and policy findings are unaffected.</li>
+        </ul>
+      </div>
+      <figcaption class="sample">SAMPLE DATA</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pricing</p>
+      <h2 id="pricing-title">Start free. Upgrade only if the audit earns it.</h2>
+      <p>The free audit is a real audit, not a teaser. Growth Monitor adds the money side and keeps watching your store for you.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free</h3>
+        <p class="price">$0</p>
+        <p class="note">Forever. No card required.</p>
+        <ul>
+          <li>Full store audit in about 30 seconds</li>
+          <li>Complete findings list with top fixes</li>
+          <li>Catalog issues CSV export</li>
+          <li>Read-only, nothing in your store changes</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://apps.shopify.com/profit-leak-scanner-1?utm_source=auditink-site&amp;utm_medium=website&amp;utm_campaign=pricing-free">Install free</a>
+      </div>
+      <div class="plan featured">
+        <h3>Growth Monitor</h3>
+        <p class="price">$19 <small>/ month</small></p>
+        <p class="note">7-day free trial. Billed by Shopify, cancel anytime.</p>
+        <ul>
+          <li>Profit leak estimates in dollars, with the math shown</li>
+          <li>Scheduled rescans and new-leak alerts</li>
+          <li>Scan history and before and after receipts</li>
+          <li>Full report exports: CSV, Markdown, PDF</li>
+        </ul>
+        <a class="btn btn-primary" href="https://apps.shopify.com/profit-leak-scanner-1?utm_source=auditink-site&amp;utm_medium=website&amp;utm_campaign=pricing-growth">Start with the free audit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" aria-labelledby="blog-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">From the blog</p>
+      <h2 id="blog-title">Learn to spot profit leaks yourself</h2>
+    </div>
+    <div class="cards">
+      <a class="card" href="blog/shopify-profit-leaks/">
+        <p class="meta">GUIDE · 12 MIN READ</p>
+        <h3>The 12 most common profit leaks in a Shopify store</h3>
+        <p>Discounts, returns, shipping thresholds and product pages: what each leak costs, how to check for it by hand, and what to do about it.</p>
+        <span class="more">Read the guide &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Questions</p>
+      <h2 id="faq-title">Before you install</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Is it safe to install?</summary>
+        <p>Yes. Auditink only asks for read access. It never creates, edits or deletes anything in your store, and it stores no customer personal data. See the <a href="privacy-policy.html">privacy policy</a> for the details.</p>
+      </details>
+      <details>
+        <summary>What do I get on the free plan?</summary>
+        <p>A full audit of your store: a risk verdict, the complete list of findings with the top fixes, and a CSV export of catalog issues. Money estimates, scheduled rescans and history are part of Growth Monitor.</p>
+      </details>
+      <details>
+        <summary>Why would the report withhold a money estimate?</summary>
+        <p>Because guessing would be worse than saying nothing. If your products have no cost prices, or there are too few orders to measure, Auditink tells you so. Adding product costs in Shopify usually unlocks the estimates.</p>
+      </details>
+      <details>
+        <summary>Do I need to set anything up?</summary>
+        <p>No. Install it and press Scan. The audit uses the products, policies and orders already in your store.</p>
+      </details>
+      <details>
+        <summary>How do I cancel Growth Monitor?</summary>
+        <p>Downgrade from the plan section inside the app, or uninstall it from your Shopify admin. Billing runs through Shopify, so there is nothing else to cancel.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="alt cta-band" aria-labelledby="cta-title">
+  <div class="wrap">
+    <h2 id="cta-title">Find your first leak before lunch</h2>
+    <p>Install Auditink, press Scan, and fix the top item on the list today. It costs nothing to look.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://apps.shopify.com/profit-leak-scanner-1?utm_source=auditink-site&amp;utm_medium=website&amp;utm_campaign=footer-cta">Run your free audit</a>
+    </div>
+  </div>
+</section>
+
 </main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>Auditink is a Shopify app by Orissty Studios, Delft, the Netherlands.</span>
+    <nav aria-label="Footer">
+      <a href="blog/">Blog</a>
+      <a href="support.html">Support</a>
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="mailto:orisstystudios@gmail.com">orisstystudios@gmail.com</a>
+    </nav>
+  </div>
+</footer>
 </body>
 </html>
